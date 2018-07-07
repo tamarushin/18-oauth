@@ -23,13 +23,13 @@ Write a description of the project in your README.md, including detailed instruc
 
 
 #### Providers & Assignments
-Aaron & Khoa - Linkedin
-Anna & Phillip - Yahoo!
-Ariel & Tyler - Evernote
-Autumn & Max - Github
-Brittany & Tama - Facebook
-Haley & Richard - Dropbox
-Josh & James - Auth0
-Madhu & Mike - Instagram
+- Aaron & Khoa - Linkedin
+- Anna & Phillip - Yahoo!
+- Ariel & Tyler - Evernote
+- Autumn & Max - Github
+- Brittany & Tama - Facebook
+- Haley & Richard - Dropbox
+- Josh & James - Auth0
+- Madhu & Mike - Instagram
 
 Note that each of these will follow the same general handshaking format as Google, so the steps will be largely the same, but with different credentials.  You should be able to create free accounts with each provider for the purposes of making this connection.
