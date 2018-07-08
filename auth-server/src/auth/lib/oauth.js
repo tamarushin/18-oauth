@@ -18,33 +18,33 @@ const authorize = (req) => {
   console.log('(1) code', code);
 
   // exchange the code or a token
-  return superagent.post('https://www.googleapis.com/oauth2/v4/token')
+  return superagent.post('https://api.facebook.com/oauth/access_token')
     .type('form')
     .send({
       code: code,
-      client_id: process.env.GOOGLE_CLIENT_ID,
-      client_secret: process.env.GOOGLE_CLIENT_SECRET,
+      client_id: process.env.FACEBOOK_CLIENT_ID,
+      client_secret: process.env.FACEBOOK_CLIENT_SECRET,
       redirect_uri: `${process.env.API_URL}/oauth`,
       grant_type: 'authorization_code',
     })
     .then( response => {
       let googleToken = response.body.access_token;
-      console.log('(2) google token', googleToken);
+      console.log('(2) facebook token', googleToken);
       return googleToken;
     })
   // use the token to get a user
     .then ( token => {
-      return superagent.get('https://www.googleapis.com/plus/v1/people/me/openIdConnect')
+      return superagent.get('https://developers.facebook.com/apps/1928723210473744/settings/advanced/')
         .set('Authorization', `Bearer ${token}`)
         .then (response => {
           let user = response.body;
-          console.log('(3) Google User', user);
+          console.log('(3) facebook User', user);
           return user;
         });
     })
-    .then(googleUser => {
-      console.log('(4) Creating Account')
-      return User.createFromOAuth(googleUser);
+    .then(facebookUser => {
+      console.log('(4) Creating Account');
+      return User.createFromOAuth(facebookUser);
     })
     .then (user => {
       console.log('(5) Created User, generating token');
